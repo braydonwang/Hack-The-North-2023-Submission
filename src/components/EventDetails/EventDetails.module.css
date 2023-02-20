@@ -1,5 +1,14 @@
 .container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     padding: 10vh 5vw;
+    height: 100vh;
+}
+
+.time {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 30px;
 }

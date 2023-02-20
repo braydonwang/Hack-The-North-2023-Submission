@@ -11,6 +11,7 @@ export default function App() {
       <Box
         w="100%"
         h="100%"
+        minH="100vh"
         bgGradient="linear(to-r, rgba(239, 183, 186, 0.2), rgba(229, 192, 200, 0.2), rgba(250, 250, 251, 0.2), rgba(203, 213, 240, 0.2), rgba(25, 79, 146, 0.2), rgba(149, 244, 217, 0.2))"
       >
         <Router>

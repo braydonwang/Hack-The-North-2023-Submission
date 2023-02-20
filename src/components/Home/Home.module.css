@@ -46,12 +46,12 @@
         display: inline-block;
 }
 
-.worldwideWord {
+.canadaWord {
     background-image: linear-gradient(-225deg,
-            #18e74b 0%,
-            #30c4f6 29%,
-            #0062ff 67%,
-            #18e74b 100%);
+            #9f1c08 0%,
+            #f72929 29%,
+            #f68270 67%,
+            #f55b43 100%);
     background-size: auto auto;
     background-clip: border-box;
     background-size: 200% auto;
@@ -68,7 +68,7 @@
 .input {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 60px;
     width: 40vw;
@@ -81,6 +81,7 @@
     justify-content: space-between;
     gap: 10px;
     width: 70%;
+    min-width: 400px;
 }
 
 .searchButton {

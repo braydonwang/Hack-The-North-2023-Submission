@@ -1,10 +1,10 @@
 import { Tag, TagLabel, TagLeftIcon } from "@chakra-ui/react";
 import { SettingsIcon, ChatIcon, SunIcon } from "@chakra-ui/icons";
 
-export default function CustomTag({ event, size }) {
+export default function CustomTag({ event, width, size }) {
   return event.event_type === "workshop" ? (
     <Tag
-      width="110px"
+      width={width + 20}
       size={size}
       variant="solid"
       colorScheme="purple"
@@ -16,8 +16,8 @@ export default function CustomTag({ event, size }) {
     </Tag>
   ) : event.event_type === "tech_talk" ? (
     <Tag
-      width="105px"
-      size="md"
+      width={width + 15}
+      size={size}
       variant="solid"
       colorScheme="green"
       paddingTop="5px"
@@ -28,8 +28,8 @@ export default function CustomTag({ event, size }) {
     </Tag>
   ) : (
     <Tag
-      width="90px"
-      size="md"
+      width={width}
+      size={size}
       variant="solid"
       colorScheme="orange"
       paddingTop="5px"

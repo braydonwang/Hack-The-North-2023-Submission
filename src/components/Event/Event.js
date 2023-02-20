@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Card,
   CardBody,
@@ -16,9 +15,7 @@ import CustomTag from "../CustomTag/CustomTag";
 
 import classes from "./Event.module.css";
 
-export default function Event({ event }) {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
-
+export default function Event({ event, user }) {
   const convertTime = () => {
     const months = [
       "Jan",
@@ -47,10 +44,15 @@ export default function Event({ event }) {
     return `${startMonth} ${startDay}, ${startYear} to ${endMonth} ${endDay}, ${endYear}`;
   };
 
-  console.log(event);
-
   return (
-    <Card maxW="sm" variant="outline">
+    <Card
+      minW="sm"
+      maxW="sm"
+      variant="outline"
+      height="100%"
+      margin="10px 10px"
+      _hover={{ borderColor: "#0070f3" }}
+    >
       {event.permission === "private" && (
         <LockIcon position="absolute" top="15px" right="15px" />
       )}
@@ -64,7 +66,7 @@ export default function Event({ event }) {
         >
           <Stack mt="6" spacing="3">
             <Heading size="md">{event.name}</Heading>
-            <CustomTag event={event} />
+            <CustomTag event={event} size="md" width={90} />
             <Text noOfLines={4}>{event.description}</Text>
             <span className={classes.time}>
               <TimeIcon marginRight="10px" />

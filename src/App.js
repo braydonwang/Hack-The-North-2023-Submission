@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Box } from "@chakra-ui/react";
 
-function App() {
+import Home from "./components/Home/Home";
+import EventDetails from "./components/EventDetails/EventDetails";
+import Login from "./components/Login/Login";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Box
+        w="100%"
+        h="100%"
+        bgGradient="linear(to-r, rgba(239, 183, 186, 0.2), rgba(229, 192, 200, 0.2), rgba(250, 250, 251, 0.2), rgba(203, 213, 240, 0.2), rgba(25, 79, 146, 0.2), rgba(149, 244, 217, 0.2))"
+      >
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/event/:id" element={<EventDetails />}></Route>
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </Router>
+      </Box>
+    </>
   );
 }
-
-export default App;

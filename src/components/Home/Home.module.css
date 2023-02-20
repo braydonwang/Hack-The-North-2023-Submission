@@ -1,0 +1,88 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 7vh 2rem;
+}
+
+.gradientTitle {
+    background-image: linear-gradient(-225deg,
+            #239fe2 0%,
+            #3254eb 20%,
+            #731dc8 40%,
+            #c92923 60%,
+            #11a399 80%,
+            #239fe2 100%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.eventsWord {
+    background-image: linear-gradient(
+                -225deg,
+                    #3600ff 0%,
+                    #8816ff 29%,
+                    #ff1a66 67%,
+                    #3600ff 100%);
+        background-size: auto auto;
+        background-clip: border-box;
+        background-size: 200% auto;
+        color: #fff;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+}
+
+.worldwideWord {
+    background-image: linear-gradient(-225deg,
+            #18e74b 0%,
+            #30c4f6 29%,
+            #0062ff 67%,
+            #18e74b 100%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.description {
+    margin-bottom: 40px;
+}
+
+.input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    width: 40vw;
+    margin-bottom: 50px;
+}
+
+.searchBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    width: 70%;
+}
+
+.searchButton {
+    width: 110px;
+}

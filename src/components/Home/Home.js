@@ -27,6 +27,7 @@ export default function Home() {
   );
   const [events, setEvents] = useState(undefined);
   const [filteredEvents, setFilteredEvents] = useState(undefined);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,7 +68,7 @@ export default function Home() {
         setFilteredEvents(undefined);
       }
     }
-  }, [filter, events]);
+  }, [filter]);
 
   const handleLogout = () => {
     setUser(undefined);
@@ -77,6 +78,20 @@ export default function Home() {
   const handleChooseFilter = (newFilter) => {
     setFilter(newFilter);
     localStorage.setItem("filter", newFilter);
+  };
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSearch = () => {
+    if (search.length > 0) {
+      const newEvents = events.filter((event) => {
+        return event.name.toLocaleLowerCase().match(search.toLocaleLowerCase());
+      });
+      setSearch("");
+      setFilteredEvents(newEvents);
+    }
   };
 
   return (
@@ -120,8 +135,18 @@ export default function Home() {
       </Text>
       <span className={classes.input}>
         <span className={classes.searchBar}>
-          <Input variant="outline" bg="white" placeholder="Search..." />
-          <Button className={classes.searchButton} colorScheme="blue">
+          <Input
+            value={search}
+            onChange={handleChange}
+            variant="outline"
+            bg="white"
+            placeholder="Search..."
+          />
+          <Button
+            className={classes.searchButton}
+            colorScheme="blue"
+            onClick={handleSearch}
+          >
             Search
           </Button>
         </span>

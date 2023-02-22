@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
-import { Text } from "@chakra-ui/react";
+import { Text, Box } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import axios from "axios";
 
@@ -29,6 +29,7 @@ const RightArrow = () => {
 
 export default function HorizontalScrollbar({ data }) {
   const [events, setEvents] = useState(undefined);
+  const user = localStorage.getItem("user");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,17 +42,17 @@ export default function HorizontalScrollbar({ data }) {
 
   return (
     events && (
-      <div className={classes.scrollmenu}>
+      <Box width={["90vw", null, "70vw", "60vw"]}>
         <ScrollMenu
           LeftArrow={LeftArrow}
           RightArrow={RightArrow}
           className={classes.scrollmenu}
         >
           {data.map((item, ind) => (
-            <Event event={events[item - 1]} key={ind} />
+            <Event event={events[item - 1]} key={ind} user={user} />
           ))}
         </ScrollMenu>
-      </div>
+      </Box>
     )
   );
 }

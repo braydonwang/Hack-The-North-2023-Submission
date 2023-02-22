@@ -18,6 +18,7 @@ import { BsPersonFill } from "react-icons/bs";
 
 import classes from "./Login.module.css";
 
+// List of valid login details
 const validUsers = [
   {
     username: "Hacker",

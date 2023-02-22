@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { Link as ReachLink } from "react-router-dom";
 import {
   Button,
   Link,
   Text,
   Input,
+  Flex,
   Menu,
   MenuButton,
   MenuList,
@@ -49,7 +51,6 @@ export default function Home() {
         newEvents = events.filter((event) => {
           return event.event_type === filter;
         });
-        setFilteredEvents(newEvents);
       } else {
         if (filter === "time (oldest)") {
           newEvents.sort((a, b) => {
@@ -64,11 +65,10 @@ export default function Home() {
             return a.name.localeCompare(b.name);
           });
         }
-        setEvents(newEvents);
-        setFilteredEvents(undefined);
       }
+      setFilteredEvents(newEvents);
     }
-  }, [filter]);
+  }, [filter, events]);
 
   const handleLogout = () => {
     setUser(undefined);
@@ -97,10 +97,10 @@ export default function Home() {
   return (
     <div className={classes.container}>
       {!user ? (
-        <Link href="/login">
+        <Link as={ReachLink} to="/login">
           <Button
             colorScheme="purple"
-            padding="5px 25px"
+            padding={["3px 15px", "5px 25px"]}
             position="absolute"
             top="20px"
             right="20px"
@@ -111,7 +111,7 @@ export default function Home() {
       ) : (
         <Button
           colorScheme="purple"
-          padding="5px 25px"
+          padding={["3px 15px", "5px 25px"]}
           position="absolute"
           top="20px"
           right="20px"
@@ -120,11 +120,15 @@ export default function Home() {
           Logout
         </Button>
       )}
-      <Text fontSize="7xl" fontWeight={700} textAlign="center">
+      <Text
+        fontSize={["5xl", "6xl", "7xl"]}
+        fontWeight={700}
+        textAlign="center"
+      >
         <span className={classes.gradientTitle}>Hack The North</span> 2023
       </Text>
       <Text
-        fontSize="3xl"
+        fontSize={["20px", "2xl", "3xl"]}
         fontWeight={500}
         textAlign="center"
         className={classes.description}
@@ -133,8 +137,8 @@ export default function Home() {
         build the next big thing at{" "}
         <span className={classes.canadaWord}>Canada's</span> largest hackathon!
       </Text>
-      <span className={classes.input}>
-        <span className={classes.searchBar}>
+      <Flex direction={{ base: "column", md: "row" }} className={classes.input}>
+        <Flex minWidth={["300px", "400px"]} className={classes.searchBar}>
           <Input
             value={search}
             onChange={handleChange}
@@ -149,13 +153,13 @@ export default function Home() {
           >
             Search
           </Button>
-        </span>
+        </Flex>
         <Text fontWeight={500} textColor="grey">
           or
         </Text>
         <Menu>
           <MenuButton
-            minWidth="200px"
+            minWidth={["150px", "200px"]}
             bg="#c1c9d1"
             as={Button}
             rightIcon={<ChevronDownIcon />}
@@ -190,7 +194,7 @@ export default function Home() {
             </MenuGroup>
           </MenuList>
         </Menu>
-      </span>
+      </Flex>
       <SimpleGrid columns={[1, null, 2, null, 3]} spacing="10px">
         {filteredEvents
           ? filteredEvents.map((event, key) => (

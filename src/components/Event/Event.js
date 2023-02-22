@@ -1,3 +1,4 @@
+import { Link as ReachLink } from "react-router-dom";
 import {
   Card,
   CardBody,
@@ -46,7 +47,7 @@ export default function Event({ event, user }) {
 
   return (
     <Card
-      minW="sm"
+      minW="250px"
       maxW="sm"
       variant="outline"
       height="100%"
@@ -58,7 +59,8 @@ export default function Event({ event, user }) {
       )}
       <CardBody>
         <LinkOverlay
-          href={
+          as={ReachLink}
+          to={
             !user && event.permission === "private"
               ? "/login"
               : `/event/${event.id}`

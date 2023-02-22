@@ -55,7 +55,7 @@ export default function EventDetails() {
     event && (
       <div className={classes.container}>
         <Text
-          fontSize="6xl"
+          fontSize={["4xl", null, "6xl"]}
           fontWeight={600}
           marginBottom="15px"
           marginRight="10vw"
@@ -64,32 +64,32 @@ export default function EventDetails() {
         </Text>
         <CustomTag event={event} size="lg" width={110} />
         <Text
-          fontSize="3xl"
+          fontSize={["1xl", null, "3xl"]}
           fontWeight={400}
-          maxWidth="60vw"
+          maxWidth={["85vw", "80vw", null, "60vw"]}
           marginTop="30px"
           marginBottom="15px"
         >
           {event.description}
         </Text>
-        <Text fontSize="2xl" marginBottom="10px">
+        <Text fontSize={["1xl", "2xl"]} marginBottom="10px">
           <span style={{ fontWeight: 600 }}>Speakers: </span>
           {event.speakers.map((speaker) => speaker.name)}
         </Text>
         <span className={classes.time}>
           <TimeIcon marginRight="10px" boxSize={6} />
-          <Text fontWeight={600} fontSize="2xl">
+          <Text fontWeight={600} fontSize={["1xl", "2xl"]}>
             {convertTime()}
           </Text>
         </span>
-        <ButtonGroup marginBottom="40px">
+        <ButtonGroup marginBottom={["20px", "40px"]}>
           {event.public_url && (
             <Link
               href={event.public_url}
               isExternal
               style={{ textDecoration: "none" }}
             >
-              <Button variant="solid" colorScheme="blue" size="lg">
+              <Button variant="solid" colorScheme="blue" size={["md", "lg"]}>
                 Learn More
                 <InfoOutlineIcon marginLeft="10px" />
               </Button>
@@ -100,12 +100,15 @@ export default function EventDetails() {
             isExternal
             style={{ textDecoration: "none" }}
           >
-            <Button variant="solid" colorScheme="yellow" size="lg">
+            <Button variant="solid" colorScheme="yellow" size={["md", "lg"]}>
               View Event
               <ViewIcon marginLeft="10px" />
             </Button>
           </Link>
         </ButtonGroup>
+        <Text fontSize={["1xl", "2xl", "3xl"]} fontWeight={500}>
+          Related Events:
+        </Text>
         <HorizontalScrollbar data={event.related_events} />
       </div>
     )

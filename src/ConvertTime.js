@@ -1,3 +1,4 @@
+// Function that returns a formatted date string from unix timestamp
 const convertTime = (event) => {
   const months = [
     "Jan",

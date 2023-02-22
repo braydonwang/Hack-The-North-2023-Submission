@@ -1,19 +1,25 @@
+// Third-party libraries
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Text, Link, Button, ButtonGroup } from "@chakra-ui/react";
 import { TimeIcon, InfoOutlineIcon, ViewIcon } from "@chakra-ui/icons";
 import axios from "axios";
 
+// Components/Classes
 import CustomTag from "../CustomTag/CustomTag";
 import HorizontalScrollbar from "../HorizontalScrollbar/HorizontalScrollbar";
 import { convertTime } from "../../ConvertTime";
 import classes from "./EventDetails.module.css";
 
 export default function EventDetails() {
+  // Event ID from URL
   const { id } = useParams();
+  // Current user logged in
   const user = localStorage.getItem("user");
+  // Current event being displayed
   const [event, setEvent] = useState(undefined);
 
+  // Fetch single event data from API endpoint
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(

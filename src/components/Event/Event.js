@@ -1,3 +1,4 @@
+// Third-party libraries
 import { Link as ReachLink } from "react-router-dom";
 import {
   Card,
@@ -13,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { TimeIcon, InfoOutlineIcon, LockIcon } from "@chakra-ui/icons";
 
+// Components/Classes
 import CustomTag from "../CustomTag/CustomTag";
 import { convertTime } from "../../ConvertTime";
 import classes from "./Event.module.css";

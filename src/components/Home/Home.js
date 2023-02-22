@@ -1,3 +1,4 @@
+// Third-party libraries
 import { useState, useEffect } from "react";
 import { Link as ReachLink } from "react-router-dom";
 import {
@@ -17,20 +18,28 @@ import {
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import axios from "axios";
 
+// Components/Classes
 import Event from "../Event/Event";
 import classes from "./Home.module.css";
 
+// All valid event types
 const allEvents = ["workshop", "tech_talk", "activity"];
 
 export default function Home() {
+  // Current user data from local device
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  // Current filter type fetched from local device
   const [filter, setFilter] = useState(
     localStorage.getItem("filter") ?? "Filter"
   );
+  // All events data
   const [events, setEvents] = useState(undefined);
+  // All events re-ordered based on filter type
   const [filteredEvents, setFilteredEvents] = useState(undefined);
+  // Search bar input
   const [search, setSearch] = useState("");
 
+  // Fetch all events from API endpoint
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get("https://api.hackthenorth.com/v3/events");
@@ -40,6 +49,7 @@ export default function Home() {
     fetchData();
   }, []);
 
+  // Change filtered events when filter type or events are modified
   useEffect(() => {
     if (events) {
       var newEvents = JSON.parse(JSON.stringify(events));
@@ -70,20 +80,24 @@ export default function Home() {
     }
   }, [filter, events]);
 
+  // Logout user
   const handleLogout = () => {
     setUser(undefined);
     localStorage.removeItem("user");
   };
 
+  // Choose filter type
   const handleChooseFilter = (newFilter) => {
     setFilter(newFilter);
     localStorage.setItem("filter", newFilter);
   };
 
+  // Controlled search bar input
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
 
+  // Return filtered events from search input through Regex matching
   const handleSearch = () => {
     if (search.length > 0) {
       const newEvents = events.filter((event) => {

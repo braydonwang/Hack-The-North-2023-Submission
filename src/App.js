@@ -1,6 +1,8 @@
+// Third-party libraries
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
 
+// Components/Classes
 import Home from "./components/Home/Home";
 import EventDetails from "./components/EventDetails/EventDetails";
 import Login from "./components/Login/Login";

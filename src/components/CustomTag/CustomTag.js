@@ -1,7 +1,9 @@
+// Third-party libraries
 import { Tag, TagLabel, TagLeftIcon } from "@chakra-ui/react";
 import { SettingsIcon, ChatIcon, SunIcon } from "@chakra-ui/icons";
 
 export default function CustomTag({ event, width, size }) {
+  // Render tag based on event type
   return event.event_type === "workshop" ? (
     <Tag
       width={width + 20}

@@ -6,6 +6,7 @@ import axios from "axios";
 
 import CustomTag from "../CustomTag/CustomTag";
 import HorizontalScrollbar from "../HorizontalScrollbar/HorizontalScrollbar";
+import { convertTime } from "../../ConvertTime";
 import classes from "./EventDetails.module.css";
 
 export default function EventDetails() {
@@ -22,34 +23,6 @@ export default function EventDetails() {
 
     fetchData();
   }, [id]);
-
-  const convertTime = () => {
-    const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-    const startDate = new Date(event.start_time);
-    const endDate = new Date(event.end_time);
-
-    const startMonth = months[startDate.getMonth()];
-    const endMonth = months[endDate.getMonth()];
-    const startDay = startDate.getDay();
-    const endDay = endDate.getDay();
-    const startYear = startDate.getFullYear();
-    const endYear = endDate.getFullYear();
-
-    return `${startMonth} ${startDay}, ${startYear} to ${endMonth} ${endDay}, ${endYear}`;
-  };
 
   return (
     event && (
@@ -79,7 +52,7 @@ export default function EventDetails() {
         <span className={classes.time}>
           <TimeIcon marginRight="10px" boxSize={6} />
           <Text fontWeight={600} fontSize={["1xl", "2xl"]}>
-            {convertTime()}
+            {convertTime(event)}
           </Text>
         </span>
         <ButtonGroup marginBottom={["20px", "40px"]}>

@@ -12,39 +12,12 @@ import {
   LinkOverlay,
 } from "@chakra-ui/react";
 import { TimeIcon, InfoOutlineIcon, LockIcon } from "@chakra-ui/icons";
-import CustomTag from "../CustomTag/CustomTag";
 
+import CustomTag from "../CustomTag/CustomTag";
+import { convertTime } from "../../ConvertTime";
 import classes from "./Event.module.css";
 
 export default function Event({ event, user }) {
-  const convertTime = () => {
-    const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-    const startDate = new Date(event.start_time);
-    const endDate = new Date(event.end_time);
-
-    const startMonth = months[startDate.getMonth()];
-    const endMonth = months[endDate.getMonth()];
-    const startDay = startDate.getDay();
-    const endDay = endDate.getDay();
-    const startYear = startDate.getFullYear();
-    const endYear = endDate.getFullYear();
-
-    return `${startMonth} ${startDay}, ${startYear} to ${endMonth} ${endDay}, ${endYear}`;
-  };
-
   return (
     <Card
       minW="250px"
@@ -73,7 +46,7 @@ export default function Event({ event, user }) {
             <span className={classes.time}>
               <TimeIcon marginRight="10px" />
               <Text fontWeight={600} fontSize="14px">
-                {convertTime()}
+                {convertTime(event)}
               </Text>
             </span>
           </Stack>

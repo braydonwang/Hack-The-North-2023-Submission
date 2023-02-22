@@ -11,6 +11,7 @@ import classes from "./EventDetails.module.css";
 
 export default function EventDetails() {
   const { id } = useParams();
+  const user = localStorage.getItem("user");
   const [event, setEvent] = useState(undefined);
 
   useEffect(() => {
@@ -73,7 +74,12 @@ export default function EventDetails() {
             isExternal
             style={{ textDecoration: "none" }}
           >
-            <Button variant="solid" colorScheme="yellow" size={["md", "lg"]}>
+            <Button
+              variant="solid"
+              colorScheme="yellow"
+              size={["md", "lg"]}
+              isDisabled={!user}
+            >
               View Event
               <ViewIcon marginLeft="10px" />
             </Button>

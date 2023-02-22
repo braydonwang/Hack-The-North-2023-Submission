@@ -100,7 +100,7 @@ export default function Home() {
         <Link as={ReachLink} to="/login">
           <Button
             colorScheme="purple"
-            padding={["3px 15px", "5px 25px"]}
+            size={["sm", null, "md"]}
             position="absolute"
             top="20px"
             right="20px"
@@ -111,7 +111,7 @@ export default function Home() {
       ) : (
         <Button
           colorScheme="purple"
-          padding={["3px 15px", "5px 25px"]}
+          size={["sm", null, "md"]}
           position="absolute"
           top="20px"
           right="20px"
@@ -121,7 +121,7 @@ export default function Home() {
         </Button>
       )}
       <Text
-        fontSize={["5xl", "6xl", "7xl"]}
+        fontSize={["4xl", "5xl", "6xl", "7xl"]}
         fontWeight={700}
         textAlign="center"
       >
